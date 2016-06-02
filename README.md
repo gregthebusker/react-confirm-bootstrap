@@ -1,4 +1,4 @@
-# react-bootstrap-confirm
+# react-confirm-bootstrap
 Confirm Dialog for react with Bootstrap Modal.
 
 
