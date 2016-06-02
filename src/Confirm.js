@@ -3,12 +3,12 @@ var { Button, Modal } = require('react-bootstrap');
 
 var Confirm = React.createClass({
     propTypes: {
-        body: React.PropTypes.any.isRequired,
-        buttonText: React.PropTypes.any,
-        cancelText: React.PropTypes.any,
-        confirmText: React.PropTypes.any,
+        body: React.PropTypes.node.isRequired,
+        buttonText: React.PropTypes.node,
+        cancelText: React.PropTypes.node,
+        confirmText: React.PropTypes.node,
         onConfirm: React.PropTypes.func.isRequired,
-        title: React.PropTypes.string.isRequired,
+        title: React.PropTypes.node.isRequired,
         visible: React.PropTypes.bool,
     },
 
