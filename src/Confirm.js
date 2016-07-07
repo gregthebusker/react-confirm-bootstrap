@@ -53,37 +53,39 @@ var Confirm = React.createClass({
     },
 
     render() {
+        var modal = (
+            <Modal show={this.state.isOpened} onHide={this.onClose}>
+                <Modal.Header>
+                    <Modal.Title>{this.props.title}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {this.props.body}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button bsStyle="default" onClick={this.onClose}>{this.props.cancelText}</Button>
+                    <Button bsStyle={this.props.confirmBSStyle} onClick={this.onConfim}>{this.props.confirmText}</Button>
+                </Modal.Footer>
+            </Modal>
+        );
         var content;
         if (this.props.children) {
-            content = React.cloneElement(React.Children.only(this.props.children), {
+            var btn = React.Children.only(this.props.children);
+            content = React.cloneElement(btn, {
                 onClick: this.onButtonClick,
-            });
+                style: this.props.style
+            },
+                btn.props.children,
+                modal
+            );
         } else {
             content = (
-                <Button onClick={this.onButtonClick}>
+                <Button onClick={this.onButtonClick} style={this.props.style}>
                     {this.props.buttonText}
+                    {modal}
                 </Button>
             );
         }
-
-
-        return (
-            <span style={this.props.style}>
-                {content}
-                <Modal show={this.state.isOpened} onHide={this.onClose}>
-                    <Modal.Header>
-                        <Modal.Title>{this.props.title}</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        {this.props.body}
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button bsStyle="default" onClick={this.onClose}>{this.props.cancelText}</Button>
-                        <Button bsStyle={this.props.confirmBSStyle} onClick={this.onConfim}>{this.props.confirmText}</Button>
-                    </Modal.Footer>
-                </Modal>
-            </span>
-        );
+        return content;
     },
 });
 
