@@ -5,6 +5,7 @@ var Confirm = React.createClass({
     propTypes: {
         body: React.PropTypes.node.isRequired,
         buttonText: React.PropTypes.node,
+        showCancelButton: React.PropTypes.bool.isRequired,
         cancelText: React.PropTypes.node,
         confirmBSStyle: React.PropTypes.string,
         confirmText: React.PropTypes.node,
@@ -16,6 +17,7 @@ var Confirm = React.createClass({
     getDefaultProps() {
         return {
             cancelText: 'Cancel',
+            showCancelButton: true,
             confirmText: 'Confirm',
             confirmBSStyle: 'danger',
         };
@@ -53,6 +55,8 @@ var Confirm = React.createClass({
     },
 
     render() {
+        var cancelButton = this.state.showCancelButton ?
+            (<Button bsStyle="default" onClick={this.onClose}>{this.props.cancelText}</Button>) : null;
         var modal = (
             <Modal show={this.state.isOpened} onHide={this.onClose}>
                 <Modal.Header>
@@ -62,7 +66,7 @@ var Confirm = React.createClass({
                     {this.props.body}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button bsStyle="default" onClick={this.onClose}>{this.props.cancelText}</Button>
+                    {cancelButton}
                     <Button bsStyle={this.props.confirmBSStyle} onClick={this.onConfim}>{this.props.confirmText}</Button>
                 </Modal.Footer>
             </Modal>
