@@ -5,11 +5,11 @@ var Confirm = React.createClass({
     propTypes: {
         body: React.PropTypes.node.isRequired,
         buttonText: React.PropTypes.node,
-        showCancelButton: React.PropTypes.bool.isRequired,
         cancelText: React.PropTypes.node,
         confirmBSStyle: React.PropTypes.string,
         confirmText: React.PropTypes.node,
         onConfirm: React.PropTypes.func.isRequired,
+        showCancelButton: React.PropTypes.bool.isRequired,
         title: React.PropTypes.node.isRequired,
         visible: React.PropTypes.bool,
     },
@@ -17,9 +17,9 @@ var Confirm = React.createClass({
     getDefaultProps() {
         return {
             cancelText: 'Cancel',
-            showCancelButton: true,
             confirmText: 'Confirm',
             confirmBSStyle: 'danger',
+            showCancelButton: true,
         };
     },
 
