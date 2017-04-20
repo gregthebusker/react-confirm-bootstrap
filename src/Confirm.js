@@ -2,58 +2,36 @@ var React = require('react');
 var PropTypes = require('prop-types');
 var { Button, Modal } = require('react-bootstrap');
 
-var Confirm = React.createClass({
-    propTypes: {
-        body: PropTypes.node.isRequired,
-        buttonText: PropTypes.node,
-        cancelText: PropTypes.node,
-        confirmBSStyle: PropTypes.string,
-        confirmText: PropTypes.node,
-        onConfirm: PropTypes.func.isRequired,
-        showCancelButton: PropTypes.bool.isRequired,
-        title: PropTypes.node.isRequired,
-        visible: PropTypes.bool,
-    },
+class Confirm extends React.Component {
 
-    getDefaultProps() {
-        return {
-            cancelText: 'Cancel',
-            confirmText: 'Confirm',
-            confirmBSStyle: 'danger',
-            showCancelButton: true,
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpened : props.visible
         };
-    },
-
-    getInitialState() {
-        if (!this.props.visible) {
-            return {
-                isOpened: false,
-            };
-        } else {
-            return {
-                isOpened: true,
-            };
-        }
-    },
+        this.onButtonClick = this.onButtonClick.bind(this);
+        this.onClose = this.onClose.bind(this);
+        this.onConfim = this.onConfim.bind(this);
+    }
 
     onButtonClick() {
         this.setState({
             isOpened: true,
         });
-    },
+    }
 
     onClose() {
         this.setState({
             isOpened: false,
         });
-    },
+    }
 
     onConfim() {
         this.setState({
             isOpened: false,
         });
         this.props.onConfirm();
-    },
+    }
 
     render() {
         var cancelButton = this.props.showCancelButton ?
@@ -91,7 +69,27 @@ var Confirm = React.createClass({
             );
         }
         return content;
-    },
-});
+    }
+}
+
+Confirm.propTypes = {
+    body: PropTypes.node.isRequired,
+    buttonText: PropTypes.node,
+    cancelText: PropTypes.node,
+    confirmBSStyle: PropTypes.string,
+    confirmText: PropTypes.node,
+    onConfirm: PropTypes.func.isRequired,
+    showCancelButton: PropTypes.bool.isRequired,
+    title: PropTypes.node.isRequired,
+    visible: PropTypes.bool
+};
+
+Confirm.defaultProps = {
+    cancelText: 'Cancel',
+    confirmText: 'Confirm',
+    confirmBSStyle: 'danger',
+    showCancelButton: true
+};
+
 
 module.exports = Confirm;
