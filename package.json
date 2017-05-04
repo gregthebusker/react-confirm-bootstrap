@@ -43,6 +43,6 @@
   },
   "dependencies": {
     "prop-types": "^15.5.8",
-    "react-bootstrap": "^0.30.3"
+    "react-bootstrap": "^0.31.0"
   }
 }
