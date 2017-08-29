@@ -1,6 +1,6 @@
-var React = require('react');
-var PropTypes = require('prop-types');
-var { Button, Modal } = require('react-bootstrap');
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Button, Modal } from 'react-bootstrap';
 
 class Confirm extends React.Component {
 
@@ -92,4 +92,5 @@ Confirm.defaultProps = {
 };
 
 
-module.exports = Confirm;
+export { Confirm };
+export default Confirm;
