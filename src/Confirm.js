@@ -11,7 +11,7 @@ class Confirm extends React.Component {
         };
         this.onButtonClick = this.onButtonClick.bind(this);
         this.onClose = this.onClose.bind(this);
-        this.onConfim = this.onConfim.bind(this);
+        this.onConfirm = this.onConfirm.bind(this);
     }
 
     onButtonClick() {
@@ -26,7 +26,7 @@ class Confirm extends React.Component {
         });
     }
 
-    onConfim() {
+    onConfirm() {
         this.setState({
             isOpened: false,
         });
@@ -46,7 +46,7 @@ class Confirm extends React.Component {
                 </Modal.Body>
                 <Modal.Footer>
                     {cancelButton}
-                    <Button bsStyle={this.props.confirmBSStyle} onClick={this.onConfim}>{this.props.confirmText}</Button>
+                    <Button bsStyle={this.props.confirmBSStyle} onClick={this.onConfirm}>{this.props.confirmText}</Button>
                 </Modal.Footer>
             </Modal>
         );
