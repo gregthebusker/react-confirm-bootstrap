@@ -48,6 +48,9 @@ Default: 'danger'
 #### confirmText: React.PropTypes.node
 Text for the confirm button in the modal.
 
+#### onClose: React.PropTypes.func
+Function to be called once closed.
+
 #### onConfirm: React.PropTypes.func.isRequired
 Function to be called once confirmed.
 
