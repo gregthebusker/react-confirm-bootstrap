@@ -25,6 +25,10 @@ class Confirm extends React.Component {
         this.setState({
             isOpened: false
         });
+
+        if (typeof this.props.onClose == 'function') {
+            this.props.onClose();
+        }
     }
 
     onConfirm(event) {
@@ -86,6 +90,7 @@ Confirm.propTypes = {
     confirmBSStyle: PropTypes.string,
     confirmText: PropTypes.node,
     onConfirm: PropTypes.func.isRequired,
+    onClose: PropTypes.func,
     showCancelButton: PropTypes.bool.isRequired,
     title: PropTypes.node.isRequired,
     visible: PropTypes.bool
