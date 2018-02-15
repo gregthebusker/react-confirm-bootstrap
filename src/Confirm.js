@@ -51,7 +51,7 @@ class Confirm extends React.Component {
             </Button>
         ) : null;
         var modal = (
-            <Modal show={this.state.isOpened} onHide={this.onClose}>
+            <Modal show={this.state.isOpened} onHide={this.onClose} className={this.props.className} dialogClassName={this.props.dialogClassName}>
                 <Modal.Header>
                     <Modal.Title>{this.props.title}</Modal.Title>
                 </Modal.Header>
@@ -92,8 +92,10 @@ Confirm.propTypes = {
     body: PropTypes.node.isRequired,
     buttonText: PropTypes.node,
     cancelText: PropTypes.node,
+    className: PropTypes.string,
     confirmBSStyle: PropTypes.string,
     confirmText: PropTypes.node,
+    dialogClassName: PropTypes.string,
     onConfirm: PropTypes.func.isRequired,
     onClose: PropTypes.func,
     showCancelButton: PropTypes.bool.isRequired,
