@@ -124,3 +124,50 @@ it('click on cancel calls onClose callback prop', (done) => {
 
     ReactTestUtils.Simulate.click(cancelButton);
 });
+
+it('renders text if allowHtml is false', () => {
+    let component = ReactTestUtils.renderIntoDocument(
+        <Confirm
+            title="Confirmation"
+            body="Hello <strong>World</strong>"
+            onConfirm={() => { }}>
+        </Confirm>
+    );
+
+    let actionButton = ReactTestUtils.findRenderedDOMComponentWithClass(
+        component,
+        'btn'
+    );
+    ReactTestUtils.Simulate.click(actionButton);
+
+    let modalBody = ReactTestUtils.findRenderedDOMComponentWithClass(
+        component,
+        'modal-body'
+    );
+    expect(modalBody.nodeType).toEqual(Node.ELEMENT_NODE);
+    expect(modalBody.innerHTML).toMatch('Hello &lt;strong&gt;World&lt;/strong&gt;');
+});
+
+it('renders html if allowHtml is true', () => {
+    let component = ReactTestUtils.renderIntoDocument(
+        <Confirm
+            allowHtml={true}
+            title="Confirmation"
+            body="Hello <strong>World</strong>"
+            onConfirm={() => { }}>
+        </Confirm>
+    );
+
+    let actionButton = ReactTestUtils.findRenderedDOMComponentWithClass(
+        component,
+        'btn'
+    );
+    ReactTestUtils.Simulate.click(actionButton);
+
+    let modalBody = ReactTestUtils.findRenderedDOMComponentWithClass(
+        component,
+        'modal-body'
+    );
+    expect(modalBody.nodeType).toEqual(Node.ELEMENT_NODE);
+    expect(modalBody.innerHTML).toMatch('Hello <strong>World</strong>');
+});

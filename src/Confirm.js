@@ -57,7 +57,10 @@ class Confirm extends React.Component {
                 <Modal.Header>
                     <Modal.Title>{this.props.title}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>{this.props.body}</Modal.Body>
+                {this.props.allowHtml
+                    ? <Modal.Body dangerouslySetInnerHTML={{__html: this.props.body}} />
+                    : <Modal.Body>{this.props.body}</Modal.Body>
+                }
                 <Modal.Footer>
                     {cancelButton}
                     <Button bsStyle={this.props.confirmBSStyle} onClick={this.onConfirm}>
@@ -91,6 +94,7 @@ class Confirm extends React.Component {
 }
 
 Confirm.propTypes = {
+    allowHtml: PropTypes.bool,
     body: PropTypes.node.isRequired,
     buttonText: PropTypes.node,
     cancelText: PropTypes.node,
@@ -108,6 +112,7 @@ Confirm.propTypes = {
 };
 
 Confirm.defaultProps = {
+    allowHtml: false,
     cancelText: 'Cancel',
     confirmText: 'Confirm',
     confirmBSStyle: 'danger',

@@ -29,6 +29,11 @@ Confirm Dialog for react with Bootstrap Modal.
 ```
 
 ### Props
+#### allowHtml: React.PropTypes.bool
+If true, allows HTML to be rendered in the modal body.
+<br/>
+Default: false
+
 #### body: React.PropTypes.any.isRequired
 Body text for the modal.
 
