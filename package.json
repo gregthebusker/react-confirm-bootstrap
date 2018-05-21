@@ -1,6 +1,6 @@
 {
     "name": "react-confirm-bootstrap",
-    "version": "5.2.1",
+    "version": "5.3.0",
     "description": "Confirm Dialog for react with Bootstrap Modal",
     "main": "lib/Confirm.js",
     "scripts": {
