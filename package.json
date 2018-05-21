@@ -7,7 +7,7 @@
         "package": "gulp build",
         "clean": "rimraf lib",
         "lint": "eslint src",
-        "prepublish": "npm run clean && npm run package",
+        "prepare": "npm run clean && npm run package",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --env=jsdom",
