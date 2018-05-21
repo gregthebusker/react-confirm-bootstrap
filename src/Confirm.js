@@ -53,7 +53,9 @@ class Confirm extends React.Component {
         var modal = (
             <Modal show={this.state.isOpened} onHide={this.onClose}
                    className={this.props.className} dialogClassName={this.props.dialogClassName}
-                   keyboard={this.props.keyboard} backdrop={this.props.backdrop}>
+                   keyboard={this.props.keyboard} backdrop={this.props.backdrop}
+                   enforceFocus={this.props.enforceFocus}
+                >
                 <Modal.Header>
                     <Modal.Title>{this.props.title}</Modal.Title>
                 </Modal.Header>
@@ -100,6 +102,7 @@ Confirm.propTypes = {
     dialogClassName: PropTypes.string,
     keyboard: PropTypes.bool,
     backdrop: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    enforceFocus: PropTypes.bool,
     onConfirm: PropTypes.func.isRequired,
     onClose: PropTypes.func,
     showCancelButton: PropTypes.bool.isRequired,
