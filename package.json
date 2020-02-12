@@ -51,6 +51,6 @@
     },
     "dependencies": {
         "prop-types": "^15.6.1",
-        "react-bootstrap": "^0.31.5"
+        "react-bootstrap": "^0.33.1"
     }
 }
